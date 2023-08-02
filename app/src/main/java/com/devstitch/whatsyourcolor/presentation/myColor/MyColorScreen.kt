@@ -18,7 +18,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devstitch.whatsyourcolor.R
-import com.devstitch.whatsyourcolor.presentation.AdView
 
 @Composable
 fun MyColorsScreen(
