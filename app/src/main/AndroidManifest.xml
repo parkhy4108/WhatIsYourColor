@@ -25,7 +25,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5637982010645059~5230846302"/>
+            android:value=""/>
     </application>
 
 </manifest>

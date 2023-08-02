@@ -4,7 +4,6 @@ import com.devstitch.whatsyourcolor.domain.MyColor
 import com.devstitch.whatsyourcolor.domain.Repository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import com.devstitch.whatsyourcolor.data.RoomDao
 
 class RepositoryImpl @Inject constructor(
     private val roomDao: RoomDao

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.shape.CircleShape
@@ -34,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devstitch.whatsyourcolor.R
 import com.devstitch.whatsyourcolor.navigation.Screen
-import com.devstitch.whatsyourcolor.presentation.AdView
 import com.devstitch.whatsyourcolor.presentation.BackHandler
 
 @OptIn(ExperimentalFoundationApi::class)

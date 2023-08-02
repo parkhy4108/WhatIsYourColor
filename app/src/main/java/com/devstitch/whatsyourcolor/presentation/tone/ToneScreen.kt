@@ -1,7 +1,5 @@
 package com.devstitch.whatsyourcolor.presentation.tone
 
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,14 +22,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devstitch.whatsyourcolor.R
 import com.devstitch.whatsyourcolor.navigation.Screen
-import com.devstitch.whatsyourcolor.presentation.AdView
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
 
 @Composable
 fun ToneScreen(

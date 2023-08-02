@@ -1,6 +1,5 @@
 package com.devstitch.whatsyourcolor.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -11,7 +10,6 @@ import com.devstitch.whatsyourcolor.presentation.myColor.MyColorsScreen
 import com.devstitch.whatsyourcolor.presentation.season.SeasonScreen
 import com.devstitch.whatsyourcolor.presentation.tone.ToneScreen
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.graph(navController: NavHostController) {
 
     composable(
