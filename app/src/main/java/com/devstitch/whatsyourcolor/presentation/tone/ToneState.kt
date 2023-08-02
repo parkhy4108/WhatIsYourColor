@@ -1,7 +1,12 @@
 package com.devstitch.whatsyourcolor.presentation.tone
 
-import com.devstitch.whatsyourcolor.presentation.Season
+import androidx.compose.ui.graphics.Color
 
 data class ToneState(
-    val season : Season? = null
+    val text1: String = "",
+    val text2: String = "",
+    val text3: String = "",
+    val color1: Color? = null,
+    val color2: Color? = null,
+    val color3: Color? = null
 )

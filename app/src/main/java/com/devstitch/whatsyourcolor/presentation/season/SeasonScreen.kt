@@ -1,12 +1,7 @@
 package com.devstitch.whatsyourcolor.presentation.season
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.MutableTransitionState
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -18,45 +13,32 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.devstitch.whatsyourcolor.color.Autumn
-import com.devstitch.whatsyourcolor.color.Spring
-import com.devstitch.whatsyourcolor.color.Summer
-import com.devstitch.whatsyourcolor.color.Winter
+import androidx.compose.ui.viewinterop.AndroidView
+import com.devstitch.whatsyourcolor.color.Colors
 import com.devstitch.whatsyourcolor.navigation.Screen
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.devstitch.whatsyourcolor.presentation.AdView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 
 @Composable
 fun SeasonScreen(
     openScreen: (String) -> Unit
 ) {
-//    val springColor = Spring().brightTone[1]
-//    val summerColor = Summer().lightTone[8]
-//    val autumnColor = Autumn().deepTone[1]
-//    val winterColor = Winter().trueTone[10]
-    val springColor = Spring.brightTone[1]
-    val summerColor = Summer.lightTone[8]
-    val autumnColor = Autumn.deepTone[1]
-    val winterColor = Winter.trueTone[10]
-
+    val springColor = Colors().springBrightTone[1]
+    val summerColor = Colors().summerLightTone[8]
+    val autumnColor = Colors().autumnDeepTone[1]
+    val winterColor = Colors().winterTrueTone[10]
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -70,8 +52,7 @@ fun SeasonScreen(
             fontWeight = FontWeight.ExtraBold
         )
         Box(
-            modifier = Modifier
-                .padding(30.dp),
+            modifier = Modifier.padding(30.dp),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -89,16 +70,14 @@ fun SeasonScreen(
                             .background(springColor)
                             .weight(1f)
                             .fillMaxHeight()
-                            .clickable {
-                                openScreen(Screen.ToneScreen.passSeason("Spring"))
-                            }
+                            .clickable { openScreen(Screen.ToneScreen.passSeason("Spring")) }
                     ) {
                         Text(
                             text = "SPRING",
+                            fontFamily = FontFamily.Cursive,
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
                                 .padding(10.dp),
-                            fontFamily = FontFamily.Cursive
                         )
                     }
 
@@ -107,16 +86,14 @@ fun SeasonScreen(
                             .background(summerColor)
                             .weight(1f)
                             .fillMaxHeight()
-                            .clickable {
-                                openScreen(Screen.ToneScreen.passSeason("Summer"))
-                            }
+                            .clickable { openScreen(Screen.ToneScreen.passSeason("Summer")) }
                     ) {
                         Text(
                             text = "SUMMER",
+                            fontFamily = FontFamily.Cursive,
                             modifier = Modifier
                                 .align(Alignment.BottomStart)
-                                .padding(10.dp),
-                            fontFamily = FontFamily.Cursive
+                                .padding(10.dp)
                         )
                     }
                 }
@@ -163,4 +140,5 @@ fun SeasonScreen(
             }
         }
     }
+
 }

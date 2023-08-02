@@ -1,22 +1,13 @@
 package com.devstitch.whatsyourcolor.navigation
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.SizeTransform
-import androidx.compose.animation.core.MutableTransitionState
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.devstitch.whatsyourcolor.presentation.colorList.ColorListScreen
+import com.devstitch.whatsyourcolor.presentation.myColor.MyColorsScreen
 import com.devstitch.whatsyourcolor.presentation.season.SeasonScreen
 import com.devstitch.whatsyourcolor.presentation.tone.ToneScreen
 
@@ -35,17 +26,34 @@ fun NavGraphBuilder.graph(navController: NavHostController) {
         })
     ) {
         val season = it.arguments?.getString(CHOSEN_SEASON) ?: ""
-        ToneScreen(season = season)
+        ToneScreen(
+            season = season,
+            openScreen = { route -> navController.navigate(route) },
+            popUp = { navController.popBackStack() })
     }
     composable(
         route = Screen.ColorScreen.route,
-        arguments = listOf(navArgument(CHOSEN_TONE) {
-            type = NavType.StringType
-        })
+        arguments = listOf(
+            navArgument(CHOSEN_SEASON) {
+                type = NavType.StringType
+            },
+            navArgument(CHOSEN_TONE) {
+                type = NavType.StringType
+            }
+        )
     ) {
-
+        val season = it.arguments?.getString(CHOSEN_SEASON) ?: ""
+        val tone = it.arguments?.getString(CHOSEN_TONE) ?: ""
+        ColorListScreen(
+            season = season,
+            tone = tone,
+            openScreen = { route -> navController.navigate(route) },
+            popUpScreen = { navController.popBackStack() }
+        )
     }
-    composable(route = Screen.MyColor.route) {
-
+    composable(route = Screen.MyColorScreen.route) {
+        MyColorsScreen(
+            popUpScreen = { navController.popBackStack() }
+        )
     }
 }
