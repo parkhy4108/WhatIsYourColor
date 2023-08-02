@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "560589571393",
+    "project_id": "whatisyourcolor-bbda7",
+    "storage_bucket": "whatisyourcolor-bbda7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560589571393:android:d154b7627729d9fef74dc0",
+        "android_client_info": {
+          "package_name": "com.devstitch.whatsyourcolor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560589571393-o83t4lrn4t6mejgg9l94ceci8kvadh3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devstitch.whatsyourcolor",
+            "certificate_hash": "d2efee8f363fc29199e7a4e09d98ad00c0ee590a"
+          }
+        },
+        {
+          "client_id": "560589571393-emhgn1ekm02mn5m44mj3ngj5ubgjffq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByWHC9YmBOA7DSwK-4Wski5mbOeyzEk88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560589571393-emhgn1ekm02mn5m44mj3ngj5ubgjffq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
