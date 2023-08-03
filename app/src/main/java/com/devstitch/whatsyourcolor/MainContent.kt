@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.devstitch.whatsyourcolor.common.navigation.Screen
 import com.devstitch.whatsyourcolor.common.navigation.graph
 import com.devstitch.whatsyourcolor.common.theme.WhatsYourColorTheme
-import com.devstitch.whatsyourcolor.presentation.GoogleAdView
+import com.devstitch.whatsyourcolor.presentation.composable.GoogleAdView
 
 @Composable
 fun MainContent() {

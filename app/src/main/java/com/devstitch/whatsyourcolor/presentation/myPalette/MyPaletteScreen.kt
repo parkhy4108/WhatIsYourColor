@@ -10,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,7 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devstitch.whatsyourcolor.R
-import com.devstitch.whatsyourcolor.presentation.BackHandler
+import com.devstitch.whatsyourcolor.presentation.composable.BackHandler
 import com.devstitch.whatsyourcolor.presentation.composable.StandardIconButton
 import com.devstitch.whatsyourcolor.presentation.composable.StandardText
 import com.devstitch.whatsyourcolor.R.string as AppText
@@ -64,18 +65,19 @@ fun MyPaletteScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            StandardIconButton(painter = R.drawable.back, onClick = { popUpScreen() })
+            StandardIconButton(painter = R.drawable.back, onClick = { popUpScreen() }, bgColor = Color.Black)
             Row(
                 modifier = Modifier,
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                StandardText(text = AppText.My)
+                StandardText(text = AppText.My, fontColor = Color.Black)
                 Icon(
                     painter = painterResource(id = R.drawable.palette),
-                    contentDescription = "MyColor"
+                    contentDescription = "MyColor",
+                    tint = Color.Black
                 )
-                StandardText(text = AppText.Palette)
+                StandardText(text = AppText.Palette, fontColor = Color.Black)
             }
             val isChecked = if (!state.isListBtnClicked) R.drawable.checklist else R.drawable.delete
             StandardIconButton(
@@ -88,19 +90,21 @@ fun MyPaletteScreen(
                         myPaletteViewModel.onChangedCheckedState()
                     }
                 },
+                bgColor = Color.Black
             )
 
         }
         LazyVerticalGrid(
             modifier = Modifier.fillMaxSize(),
-            columns = GridCells.Fixed(4)
+            columns = GridCells.Fixed(4),
+            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp)
         ) {
             itemsIndexed(state.colorList) { index, item ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(1f)
-                        .padding(4.dp)
+                        .padding(6.dp)
                         .clickable { myPaletteViewModel.clickedBox(index) },
                     elevation = CardDefaults.cardElevation(10.dp)
                 ) {

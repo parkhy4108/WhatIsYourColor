@@ -1,6 +1,7 @@
 package com.devstitch.whatsyourcolor.presentation.composable
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -12,12 +13,12 @@ import com.devstitch.whatsyourcolor.R
 
 @Composable
 fun StandardIconButton(
-    modifier : Modifier = Modifier,
+    modifier: Modifier = Modifier,
     @DrawableRes painter: Int,
-    bgColor : Color = Color.Black,
-    enabled : Boolean = true,
+    bgColor: Color = if (isSystemInDarkTheme()) Color.White else Color.Black,
+    enabled: Boolean = true,
     onClick: () -> Unit,
-    ) {
+) {
     IconButton(
         modifier = modifier,
         enabled = enabled,
