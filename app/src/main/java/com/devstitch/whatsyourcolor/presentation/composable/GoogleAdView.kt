@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.presentation
+package com.devstitch.whatsyourcolor.presentation.composable
 
 import android.view.ViewGroup
 import android.widget.LinearLayout

@@ -1,6 +1,7 @@
 package com.devstitch.whatsyourcolor.presentation.composable
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +17,7 @@ fun StandardText(
     modifier : Modifier = Modifier,
     @StringRes text: Int,
     fontSize: TextUnit = 20.sp,
-    fontColor: Color = Color.Black
+    fontColor: Color = if(isSystemInDarkTheme()) Color.White else Color.Black
 ) {
     Text(
         modifier = modifier,

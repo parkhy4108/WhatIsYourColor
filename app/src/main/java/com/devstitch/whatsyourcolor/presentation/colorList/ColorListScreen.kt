@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devstitch.whatsyourcolor.R
 import com.devstitch.whatsyourcolor.common.navigation.Screen
-import com.devstitch.whatsyourcolor.presentation.BackHandler
+import com.devstitch.whatsyourcolor.presentation.composable.BackHandler
 import com.devstitch.whatsyourcolor.presentation.composable.StandardIconButton
 import kotlinx.coroutines.launch
 
@@ -57,7 +57,7 @@ fun ColorListScreen(
     val saveFail = stringResource(id = R.string.saveNot)
 
     LaunchedEffect(Unit) { colorListViewModel.init(season, tone) }
-    if(state.isSaveSuccess) {
+    if (state.isSaveSuccess) {
         LaunchedEffect(snackBarHostState) {
             coroutineScope.launch {
                 snackBarHostState.showSnackbar(saveSuccess)
@@ -65,7 +65,7 @@ fun ColorListScreen(
             }
         }
     }
-    if(state.isSaveFailure) {
+    if (state.isSaveFailure) {
         LaunchedEffect(snackBarHostState) {
             coroutineScope.launch {
                 snackBarHostState.showSnackbar(saveFail)
@@ -132,7 +132,11 @@ fun ColorListScreen(
                 .padding(4.dp, 0.dp)
                 .clip(shape = CircleShape)
         ) {
-            Icon(painter = painterResource(id = R.drawable.palette), contentDescription = "MyColor")
+            Icon(
+                painter = painterResource(id = R.drawable.palette),
+                contentDescription = "MyColor",
+                tint = Color.Black
+            )
         }
 
     }

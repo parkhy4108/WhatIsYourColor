@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.presentation
+package com.devstitch.whatsyourcolor.presentation.composable
 
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
