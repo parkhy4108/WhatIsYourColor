@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor
+package com.devstitch.whatsyourcolor.common.di
 
 import android.app.Application
 import androidx.room.Room

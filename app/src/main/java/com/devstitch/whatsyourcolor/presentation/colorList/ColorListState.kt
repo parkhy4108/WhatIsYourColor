@@ -4,11 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.ui.graphics.Color
 
-data class ColorListState @OptIn(ExperimentalFoundationApi::class) constructor(
-    val selectedColor : Int = 0,
-    val selectedIndex: Int = 0,
+@OptIn(ExperimentalFoundationApi::class)
+data class ColorListState(
     val expand: Boolean = false,
-    val colorList : List<Color> = emptyList(),
-    val pagerState: PagerState = PagerState(0,0f)
-
+    val colorList: List<Color> = emptyList(),
+    val pagerState: PagerState = PagerState(0, 0f)
 )

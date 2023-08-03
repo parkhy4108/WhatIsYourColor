@@ -20,4 +20,9 @@ class RepositoryImpl @Inject constructor(
         return roomDao.deleteColors(colorList)
     }
 
+    override suspend fun hasColors(color: Int): Boolean {
+        return roomDao.hasColors(color)
+    }
+
+
 }

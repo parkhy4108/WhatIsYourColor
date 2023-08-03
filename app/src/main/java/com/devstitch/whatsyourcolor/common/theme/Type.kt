@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.ui.theme
+package com.devstitch.whatsyourcolor.common.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.ui.theme
+package com.devstitch.whatsyourcolor.common.theme
 
 import android.app.Activity
 import android.os.Build

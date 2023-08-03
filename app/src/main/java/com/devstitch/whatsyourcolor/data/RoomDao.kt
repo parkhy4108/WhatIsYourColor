@@ -18,4 +18,7 @@ interface RoomDao {
     @Query("DELETE FROM MyColors WHERE id in (:idList)")
     suspend fun deleteColors(idList: List<Int>)
 
+    @Query("SELECT EXISTS(SELECT * FROM MyColors WHERE colorRGB = :color)")
+    fun hasColors(color: Int) : Boolean
+
 }
