@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.navigation
+package com.devstitch.whatsyourcolor.common.navigation
 
 const val CHOSEN_SEASON = "season"
 const val CHOSEN_TONE = "tone"
@@ -14,5 +14,5 @@ sealed class Screen(val route: String) {
         fun passSeasonAndTone(seasonStr: String, toneStr: String): String = "COLOR/$seasonStr/$toneStr"
     }
 
-    object MyColorScreen : Screen(route = "MyCOLOR")
+    object MyPaletteScreen : Screen(route = "MyPalette")
 }

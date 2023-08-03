@@ -2,6 +2,7 @@ package com.devstitch.whatsyourcolor.presentation.season
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,18 +12,23 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.devstitch.whatsyourcolor.color.Colors
-import com.devstitch.whatsyourcolor.navigation.Screen
+import com.devstitch.whatsyourcolor.R
+import com.devstitch.whatsyourcolor.common.navigation.Screen
+import com.devstitch.whatsyourcolor.data.Colors
+import com.devstitch.whatsyourcolor.presentation.composable.StandardText
+import com.devstitch.whatsyourcolor.R.string as AppText
 
 @Composable
 fun SeasonScreen(
@@ -32,32 +38,24 @@ fun SeasonScreen(
     val summerColor = Colors().summerLightTone[8]
     val autumnColor = Colors().autumnDeepTone[1]
     val winterColor = Colors().winterTrueTone[10]
+    val interactionSource = remember { MutableInteractionSource() }
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "What's your color?",
-            fontSize = 30.sp,
-            fontFamily = FontFamily.Cursive,
-            fontWeight = FontWeight.ExtraBold
-        )
-        Box(
-            modifier = Modifier.padding(30.dp),
-            contentAlignment = Alignment.Center
+        StandardText(text = AppText.app_name, fontSize = 30.sp)
+        Card(
+            modifier = Modifier
+                .aspectRatio(1f)
+                .padding(30.dp),
+            elevation = CardDefaults.cardElevation(15.dp)
         ) {
-            Column(
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .clip(RectangleShape),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)) {
                     Box(
                         modifier = Modifier
                             .background(springColor)
@@ -65,15 +63,14 @@ fun SeasonScreen(
                             .fillMaxHeight()
                             .clickable { openScreen(Screen.ToneScreen.passSeason("Spring")) }
                     ) {
-                        Text(
-                            text = "SPRING",
-                            fontFamily = FontFamily.Cursive,
+                        StandardText(
+                            text = AppText.Spring,
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
                                 .padding(10.dp),
+                            fontColor = Color.DarkGray
                         )
                     }
-
                     Box(
                         modifier = Modifier
                             .background(summerColor)
@@ -81,35 +78,31 @@ fun SeasonScreen(
                             .fillMaxHeight()
                             .clickable { openScreen(Screen.ToneScreen.passSeason("Summer")) }
                     ) {
-                        Text(
-                            text = "SUMMER",
-                            fontFamily = FontFamily.Cursive,
+                        StandardText(
+                            text = AppText.Summer,
                             modifier = Modifier
                                 .align(Alignment.BottomStart)
-                                .padding(10.dp)
+                                .padding(10.dp),
+                            fontColor = Color.DarkGray
                         )
                     }
                 }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)) {
                     Box(
                         modifier = Modifier
                             .background(autumnColor)
                             .weight(1f)
                             .fillMaxHeight()
-                            .clickable {
-                                openScreen(Screen.ToneScreen.passSeason("Autumn"))
-                            }
+                            .clickable { openScreen(Screen.ToneScreen.passSeason("Autumn")) }
                     ) {
-                        Text(
-                            text = "AUTUMN",
+                        StandardText(
+                            text = AppText.Autumn,
                             modifier = Modifier
                                 .align(Alignment.TopEnd)
                                 .padding(10.dp),
-                            fontFamily = FontFamily.Cursive
+                            fontColor = Color.DarkGray
                         )
                     }
                     Box(
@@ -117,21 +110,45 @@ fun SeasonScreen(
                             .background(winterColor)
                             .weight(1f)
                             .fillMaxHeight()
-                            .clickable {
-                                openScreen(Screen.ToneScreen.passSeason("Winter"))
-                            }
+                            .clickable { openScreen(Screen.ToneScreen.passSeason("Winter")) }
                     ) {
-                        Text(
-                            text = "WINTER",
+                        StandardText(
+                            text = AppText.Winter,
                             modifier = Modifier
                                 .align(Alignment.TopStart)
                                 .padding(10.dp),
-                            fontFamily = FontFamily.Cursive
+                            fontColor = Color.DarkGray
                         )
                     }
                 }
             }
         }
+
+        Card(
+            elevation = CardDefaults.cardElevation(8.dp),
+            modifier = Modifier
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    onClick = { openScreen(Screen.MyPaletteScreen.route) }
+                )
+                .padding(15.dp)
+        ) {
+            Row(
+                modifier = Modifier.padding(10.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                StandardText(text = AppText.My)
+                Icon(
+                    painter = painterResource(id = R.drawable.palette),
+                    contentDescription = stringResource(id = AppText.myPalette)
+                )
+                StandardText(text = AppText.Palette)
+            }
+        }
+
     }
+
 
 }

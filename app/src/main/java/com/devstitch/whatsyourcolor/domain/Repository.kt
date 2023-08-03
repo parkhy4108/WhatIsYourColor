@@ -7,4 +7,6 @@ interface Repository {
     suspend fun saveColor(color: MyColor)
     suspend fun deleteColors(colorList : List<Int>)
 
+    suspend fun hasColors(color: Int) : Boolean
+
 }

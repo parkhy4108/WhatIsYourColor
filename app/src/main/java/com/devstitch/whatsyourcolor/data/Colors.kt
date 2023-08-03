@@ -1,4 +1,4 @@
-package com.devstitch.whatsyourcolor.color
+package com.devstitch.whatsyourcolor.data
 
 import androidx.compose.ui.graphics.Color
 
