@@ -39,6 +39,7 @@ import com.devstitch.whatsyourcolor.R
 import com.devstitch.whatsyourcolor.common.navigation.Screen
 import com.devstitch.whatsyourcolor.presentation.BackHandler
 import com.devstitch.whatsyourcolor.presentation.composable.StandardIconButton
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -52,10 +53,28 @@ fun ColorListScreen(
 ) {
     val state by colorListViewModel.state
     val coroutineScope = rememberCoroutineScope()
+    val saveSuccess = stringResource(id = R.string.save)
+    val saveFail = stringResource(id = R.string.saveNot)
 
-    val saveOkay = stringResource(id = R.string.save)
-    val saveNot = stringResource(id = R.string.saveNot)
     LaunchedEffect(Unit) { colorListViewModel.init(season, tone) }
+    if(state.isSaveSuccess) {
+        LaunchedEffect(snackBarHostState) {
+            coroutineScope.launch {
+                snackBarHostState.showSnackbar(saveSuccess)
+                colorListViewModel.onChangedSuccessState()
+            }
+        }
+    }
+    if(state.isSaveFailure) {
+        LaunchedEffect(snackBarHostState) {
+            coroutineScope.launch {
+                snackBarHostState.showSnackbar(saveFail)
+                colorListViewModel.onChangedFailureState()
+            }
+        }
+    }
+
+
     BackHandler(true) {
         if (state.expand) colorListViewModel.onChangedExpandState()
         else popUpScreen()

@@ -7,6 +7,8 @@ import androidx.compose.ui.graphics.Color
 @OptIn(ExperimentalFoundationApi::class)
 data class ColorListState(
     val expand: Boolean = false,
+    val isSaveSuccess: Boolean = false,
+    val isSaveFailure : Boolean = false,
     val colorList: List<Color> = emptyList(),
     val pagerState: PagerState = PagerState(0, 0f)
 )
