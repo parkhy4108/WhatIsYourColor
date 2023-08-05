@@ -41,7 +41,8 @@ fun ToneScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(15.dp, 5.dp, 15.dp, 15.dp)
+            .padding(20.dp,5.dp,20.dp, 20.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

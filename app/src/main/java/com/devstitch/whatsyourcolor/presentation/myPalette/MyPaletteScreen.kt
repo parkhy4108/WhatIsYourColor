@@ -1,5 +1,6 @@
 package com.devstitch.whatsyourcolor.presentation.myPalette
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -31,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -48,38 +50,42 @@ fun MyPaletteScreen(
 ) {
     val state by myPaletteViewModel.state
     val mapState = myPaletteViewModel.mapState
+    val configuration = LocalConfiguration.current
+    val columnCount = when (configuration.orientation) {
+        Configuration.ORIENTATION_PORTRAIT -> 4
+        else -> 8
+    }
+    val isChecked = if (!state.isListBtnClicked) R.drawable.checklist else R.drawable.delete
+
     LaunchedEffect(Unit) { myPaletteViewModel.init() }
+
     BackHandler(true) {
         if (state.expand) myPaletteViewModel.onChangedExpandState()
         else popUpScreen()
     }
+
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFF0F0CB))
+        modifier = Modifier.fillMaxSize().padding(20.dp,5.dp,20.dp, 5.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(4.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            StandardIconButton(painter = R.drawable.back, onClick = { popUpScreen() }, bgColor = Color.Black)
+            StandardIconButton(
+                painter = R.drawable.back,
+                onClick = { popUpScreen() }
+            )
             Row(
                 modifier = Modifier,
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                StandardText(text = AppText.My, fontColor = Color.Black)
-                Icon(
-                    painter = painterResource(id = R.drawable.palette),
-                    contentDescription = "MyColor",
-                    tint = Color.Black
-                )
-                StandardText(text = AppText.Palette, fontColor = Color.Black)
+                StandardText(text = AppText.My)
+                Icon(painter = painterResource(id = R.drawable.palette), contentDescription = null)
+                StandardText(text = AppText.Palette)
             }
-            val isChecked = if (!state.isListBtnClicked) R.drawable.checklist else R.drawable.delete
             StandardIconButton(
                 painter = isChecked,
                 enabled = state.colorList.isNotEmpty(),
@@ -89,14 +95,13 @@ fun MyPaletteScreen(
                     } else {
                         myPaletteViewModel.onChangedCheckedState()
                     }
-                },
-                bgColor = Color.Black
+                }
             )
 
         }
         LazyVerticalGrid(
             modifier = Modifier.fillMaxSize(),
-            columns = GridCells.Fixed(4),
+            columns = GridCells.Fixed(columnCount),
             contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp)
         ) {
             itemsIndexed(state.colorList) { index, item ->
@@ -113,14 +118,15 @@ fun MyPaletteScreen(
                             .fillMaxSize()
                             .background(Color(item.colorRGB))
                     ) {
-                        if(state.isListBtnClicked) {
+                        if (state.isListBtnClicked) {
                             IconButton(
                                 modifier = Modifier.align(Alignment.BottomEnd),
                                 onClick = {
                                     myPaletteViewModel.onChangedCheckedMapState(newCheckedId = item.id)
                                 }
                             ) {
-                                val tintColor = if(!mapState[item.id]!!) Color.LightGray else Color.Yellow
+                                val tintColor =
+                                    if (!mapState[item.id]!!) Color.LightGray else Color.Yellow
                                 Icon(
                                     painter = painterResource(id = R.drawable.circle),
                                     contentDescription = null,
@@ -134,6 +140,7 @@ fun MyPaletteScreen(
             }
         }
     }
+
     AnimatedVisibility(
         visible = state.expand,
         enter = fadeIn(tween(300)),
@@ -154,10 +161,10 @@ fun MyPaletteScreen(
         }
     }
 
-    if(state.showDialog) {
+    if (state.showDialog) {
         DeleteDialog(
             onDismiss = { myPaletteViewModel.cancelDialog() },
-            onConfirm = { myPaletteViewModel.onDialogConfirmClicked()}
+            onConfirm = { myPaletteViewModel.onDialogConfirmClicked() }
         )
     }
 
