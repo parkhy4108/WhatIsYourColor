@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">What\'s your color</string>
+    <string name="title">What\'s your color?</string>
     <string name="adTest">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="adId">ca-app-pub-5637982010645059~5230846302</string>
+    <string name="adHere">"Ad Here"</string>
     <string name="tone">Tone</string>
     <string name="myPalette">MyPaletteMyPalette</string>
     <string name="Spring">SPRING</string>

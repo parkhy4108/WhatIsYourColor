@@ -28,9 +28,6 @@ class MyPaletteViewModel @Inject constructor(
         repository.getAllMyColors().onEach { list ->
             mapState.clear()
             list.forEach { mapState[it.id] = false }
-            mapState.forEach {
-                println("init id: ${it.key}   ${it.value}")
-            }
             state.value = state.value.copy(colorList = list)
         }.launchIn(viewModelScope)
     }

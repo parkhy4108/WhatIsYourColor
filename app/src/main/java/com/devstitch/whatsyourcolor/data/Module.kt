@@ -1,10 +1,7 @@
-package com.devstitch.whatsyourcolor.common.di
+package com.devstitch.whatsyourcolor.data
 
 import android.app.Application
 import androidx.room.Room
-import com.devstitch.whatsyourcolor.data.RoomDao
-import com.devstitch.whatsyourcolor.data.DataBase
-import com.devstitch.whatsyourcolor.data.RepositoryImpl
 import com.devstitch.whatsyourcolor.domain.Repository
 import dagger.Module
 import dagger.Provides

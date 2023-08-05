@@ -59,8 +59,8 @@ class ColorListViewModel @Inject constructor(
         state.value = state.value.copy(colorList = colorList)
     }
 
-    fun clickedBox(row: Int, index: Int) {
-        onChangedPagerState(row * 4 + index)
+    fun clickedBox(index: Int) {
+        onChangedPagerState(index)
         onChangedExpandState()
     }
 
