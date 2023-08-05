@@ -57,7 +57,6 @@ fun ColorListScreen(
     popUpScreen: () -> Unit
 ) {
     val state by colorListViewModel.state
-    val coroutineScope = rememberCoroutineScope()
     val saveSuccess = stringResource(id = R.string.save)
     val saveFail = stringResource(id = R.string.saveNot)
     val configuration = LocalConfiguration.current
@@ -70,23 +69,19 @@ fun ColorListScreen(
 
     if (state.isSaveSuccess) {
         LaunchedEffect(snackBarHostState) {
-            coroutineScope.launch {
-                snackBarHostState.showSnackbar(saveSuccess)
-                colorListViewModel.onChangedSuccessState()
-            }
+            snackBarHostState.showSnackbar(saveSuccess)
+            colorListViewModel.onChangedSuccessState(false)
         }
     }
 
     if (state.isSaveFailure) {
         LaunchedEffect(snackBarHostState) {
-            coroutineScope.launch {
-                snackBarHostState.showSnackbar(saveFail)
-                colorListViewModel.onChangedFailureState()
-            }
+            snackBarHostState.showSnackbar(saveFail)
+            colorListViewModel.onChangedFailureState(false)
         }
     }
 
-    BackHandler(true) {
+    BackHandler {
         if (state.expand) colorListViewModel.onChangedExpandState()
         else popUpScreen()
     }

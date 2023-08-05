@@ -77,19 +77,19 @@ class ColorListViewModel @Inject constructor(
             val hasColor = repository.hasColors(color)
             if(!hasColor) {
                 repository.saveColor(MyColor(colorRGB = color))
-                onChangedSuccessState()
+                onChangedSuccessState(true)
             } else {
-                onChangedFailureState()
+                onChangedFailureState(true)
             }
         }
     }
 
-    fun onChangedSuccessState() {
-        state.value = state.value.copy(isSaveSuccess = !state.value.isSaveSuccess)
+    fun onChangedSuccessState(newState: Boolean) {
+        state.value = state.value.copy(isSaveSuccess = newState)
     }
 
-    fun onChangedFailureState() {
-        state.value = state.value.copy(isSaveFailure = !state.value.isSaveFailure)
+    fun onChangedFailureState(newState: Boolean) {
+        state.value = state.value.copy(isSaveFailure = newState)
     }
 
 }
