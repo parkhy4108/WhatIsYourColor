@@ -43,7 +43,8 @@ fun DeleteDialog(
             Text(
                 text = stringResource(id = AppText.DeleteColors),
                 modifier = Modifier.padding(8.dp),
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                fontSize = 13.sp
             )
             Text(
                 text = stringResource(id = AppText.DelDialogText),

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">What\'s your color</string>
     <string name="title">What\'s your color?</string>
@@ -19,11 +20,11 @@
     <string name="My">My</string>
     <string name="Palette">Palette</string>
     <string name="iconBtn">iconBtn</string>
-    <string name="save">It has been saved.</string>
+    <string name="save">저장되었습니다.</string>
     <string name="add">addColor</string>
-    <string name="DeleteColors">Do you want to remove the color?</string>
-    <string name="DelDialogText">The selected colors will be removed from the My Palette</string>
-    <string name="Cancel">Cancel</string>
-    <string name="Delete">Delete</string>
-    <string name="saveNot">This color has already been saved.</string>
+    <string name="DeleteColors">색상을 삭제하시겠습니까?</string>
+    <string name="DelDialogText">선택하신 색상이 목록에서 삭제됩니다.</string>
+    <string name="Cancel">취소</string>
+    <string name="Delete">삭제</string>
+    <string name="saveNot">이미 저장된 색상입니다.</string>
 </resources>

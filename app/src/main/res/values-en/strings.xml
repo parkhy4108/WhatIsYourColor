@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">What\'s your color</string>
     <string name="title">What\'s your color?</string>
@@ -19,11 +20,11 @@
     <string name="My">My</string>
     <string name="Palette">Palette</string>
     <string name="iconBtn">iconBtn</string>
-    <string name="save">It has been saved.</string>
     <string name="add">addColor</string>
     <string name="DeleteColors">Do you want to remove the color?</string>
     <string name="DelDialogText">The selected colors will be removed from the My Palette</string>
     <string name="Cancel">Cancel</string>
     <string name="Delete">Delete</string>
+    <string name="save">It has been saved.</string>
     <string name="saveNot">This color has already been saved.</string>
 </resources>
