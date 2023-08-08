@@ -56,7 +56,7 @@ fun MyPaletteScreen(
         Configuration.ORIENTATION_PORTRAIT -> 4
         else -> 8
     }
-    val isChecked = if (!state.isListBtnClicked) R.drawable.checklist else R.drawable.delete
+
 
     LaunchedEffect(Unit) { myPaletteViewModel.init() }
 
@@ -87,6 +87,7 @@ fun MyPaletteScreen(
                 Icon(painter = painterResource(id = R.drawable.palette), contentDescription = null)
                 StandardText(text = AppText.Palette)
             }
+            val isChecked = if (!state.isListBtnClicked) R.drawable.checklist else R.drawable.delete
             StandardIconButton(
                 painter = isChecked,
                 enabled = state.colorList.isNotEmpty(),

@@ -13,7 +13,6 @@ class ToneViewModel @Inject constructor() : ViewModel() {
     var state = mutableStateOf(ToneState())
         private set
     fun init(season: String) {
-
         when(season.removeSurrounding("{", "}")) {
             "Spring" -> {
                 state.value = state.value.copy(

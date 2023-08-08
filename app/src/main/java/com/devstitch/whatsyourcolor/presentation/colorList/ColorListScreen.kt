@@ -23,20 +23,16 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,7 +40,6 @@ import com.devstitch.whatsyourcolor.R
 import com.devstitch.whatsyourcolor.common.navigation.Screen
 import com.devstitch.whatsyourcolor.presentation.composable.BackHandler
 import com.devstitch.whatsyourcolor.presentation.composable.StandardIconButton
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -89,7 +84,7 @@ fun ColorListScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(5.dp,5.dp,5.dp,0.dp)
+            .padding(5.dp, 5.dp, 5.dp, 0.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -117,32 +112,21 @@ fun ColorListScreen(
                 }
             }
         }
-        IconButton(
-            onClick = { popUpScreen() },
+        StandardIconButton(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(4.dp, 0.dp, 0.dp, 0.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.back),
-                contentDescription = "BackButton",
-                tint = Color.Black
-            )
-        }
-        IconButton(
-            onClick = { openScreen(Screen.MyPaletteScreen.route) },
+                .padding(4.dp, 0.dp, 0.dp, 0.dp),
+            painter = R.drawable.back,
+            onClick = { popUpScreen() }
+        )
+        StandardIconButton(
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(4.dp, 0.dp)
-                .clip(shape = CircleShape)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.palette),
-                contentDescription = "MyColor",
-                tint = Color.Black
-            )
-        }
-
+                .clip(shape = CircleShape),
+            painter = R.drawable.palette,
+            onClick = { openScreen(Screen.MyPaletteScreen.route) }
+        )
     }
 
     AnimatedVisibility(

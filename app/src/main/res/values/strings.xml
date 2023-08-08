@@ -25,5 +25,5 @@
     <string name="DelDialogText">The selected colors will be removed from the My Palette</string>
     <string name="Cancel">Cancel</string>
     <string name="Delete">Delete</string>
-    <string name="saveNot">This color has already been saved.</string>
+    <string name="saveNot">This color already exists.</string>
 </resources>

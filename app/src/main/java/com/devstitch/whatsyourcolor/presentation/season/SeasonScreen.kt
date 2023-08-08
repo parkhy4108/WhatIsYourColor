@@ -61,9 +61,9 @@ fun SeasonScreen(openScreen: (String) -> Unit) {
                     ) {
                         Box(
                             modifier = Modifier
-                                .background(springColor)
                                 .weight(1f)
                                 .fillMaxHeight()
+                                .background(springColor)
                                 .clickable { openScreen(Screen.ToneScreen.passSeason("Spring")) }
                         ) {
                             StandardText(
@@ -76,9 +76,9 @@ fun SeasonScreen(openScreen: (String) -> Unit) {
                         }
                         Box(
                             modifier = Modifier
-                                .background(summerColor)
                                 .weight(1f)
                                 .fillMaxHeight()
+                                .background(summerColor)
                                 .clickable { openScreen(Screen.ToneScreen.passSeason("Summer")) }
                         ) {
                             StandardText(
@@ -133,12 +133,13 @@ fun SeasonScreen(openScreen: (String) -> Unit) {
             Card(
                 elevation = CardDefaults.cardElevation(8.dp),
                 modifier = Modifier
+                    .padding(15.dp)
                     .clickable(
                         interactionSource = interactionSource,
                         indication = null,
                         onClick = { openScreen(Screen.MyPaletteScreen.route) }
                     )
-                    .padding(15.dp)
+
             ) {
                 Row(
                     modifier = Modifier.padding(10.dp),
